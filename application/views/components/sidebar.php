@@ -48,7 +48,7 @@
 				</li>
 
 				<li class="nav-item mb-2">
-					<a href="../widgets.html" class="nav-link">
+					<a href="../widgets.html" class="nav-link <?= base_url('home') ? 'active bg-danger' : ''; ?>">
 						<i class="nav-icon fas fa-tags"></i>
 						<p>
 							Kategori
