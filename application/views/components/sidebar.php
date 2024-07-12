@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
 	<a href="#" class="brand-link">
-		<img src="https://www.jne.co.id/cfind/source/images/logo-white.svg" alt="AdminLTE Logo" style="width: 90px;" class="ml-5">
+		<img src="https://www.jne.co.id/cfind/source/images/logo-white.svg" alt="AdminLTE Logo" style="width: 90px;" class="ms-5">
 	</a>
 	<!-- Sidebar -->
 	<div class="sidebar">
@@ -12,7 +12,7 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 				<li class="nav-item mb-2">
-					<a href="../widgets.html" class="nav-link active bg-danger">
+					<a href="<?= base_url('') ?>" class="nav-link <?= ($this->uri->segment(1) == '') ? 'active bg-danger' : ''; ?>">
 						<i class="nav-icon fas fa-home"></i>
 						<p>
 							Home
@@ -48,7 +48,7 @@
 				</li>
 
 				<li class="nav-item mb-2">
-					<a href="../widgets.html" class="nav-link <?= base_url('home') ? 'active bg-danger' : ''; ?>">
+					<a href="<?= base_url('kategori/') ?>" class="nav-link <?= ($this->uri->segment(1) == 'kategori') ? 'active bg-danger' : ''; ?>">
 						<i class="nav-icon fas fa-tags"></i>
 						<p>
 							Kategori
