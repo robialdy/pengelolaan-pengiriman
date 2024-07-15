@@ -36,19 +36,21 @@
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Pengelolaan-Pengiriman</h1>
 									</div>
-									<form class="user" action="<?php echo base_url('auth/login'); ?>" method="post">
+									<form class="user" action="<?php echo base_url('auth/'); ?>" method="post">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter Username" autocomplete="off" required>
+											<input type="text" class="form-control form-control-user <?= form_error('username') ? 'is-invalid' : ''; ?>" id="username" name="username" aria-describedby="emailHelp" placeholder="Enter Username" autocomplete="off">
+											<?= form_error('username', '<small class="text-danger">', '</small>') ?>
 										</div>
 										<div class="form-group">
 											<div class="input-group">
-												<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" autocomplete="off" required>
+												<input type="password" class="form-control form-control-user <?= form_error('password') ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="Password" autocomplete="off">
 												<div class="input-group-append">
 													<button class="btn btn-outline-secondary" type="button" id="togglePassword">
 														<i class="fa fa-eye"></i>
 													</button>
 												</div>
 											</div>
+											<?= form_error('password', '<small class="text-danger">', '</small>') ?>
 										</div>
 
 
