@@ -15,11 +15,11 @@ class Kategori_model extends CI_Model
 
 	public function createData()
 	{
-		$nama_kategori = $this->input->post('nama_kategori');
+		$nama_kategori = $this->input->post('nama_kategori', true);
 		$slug = createSlug($nama_kategori);
 		$kategori_data = [
 			'nama_kategori' => $nama_kategori,
-			'deskripsi' => $this->input->post('deskripsi'),
+			'deskripsi' => $this->input->post('deskripsi', true),
 			'slug' => $slug
 		];
 		$this->db->insert('kategori_barang', $kategori_data);
@@ -37,8 +37,8 @@ class Kategori_model extends CI_Model
 		$new_slug = createSlug($nama_slug);
 
 		$kategori_data = [
-			'nama_kategori' => $this->input->post('nama_kategori'),
-			'deskripsi' => $this->input->post('deskripsi'),
+			'nama_kategori' => $this->input->post('nama_kategori', true),
+			'deskripsi' => $this->input->post('deskripsi', true),
 			'slug' => $new_slug
 		];
 		$this->db->where('slug', $slug);

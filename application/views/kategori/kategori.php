@@ -3,11 +3,9 @@
   <?php $this->load->view('components/sidebar'); ?>
 
 
-  <div class="pt-3">
   	<div class="pt-3 bg-danger rounded">
   		<h3 class="pb-3 ps-3 fw-medium">Kategori</h3>
   	</div>
-  </div>
 
   <?php if ($this->session->flashdata('success')) : ?>
   	<div class="alert alert-success d-flex align-items-center" role="alert">
@@ -32,7 +30,7 @@
   					<th style="width: 5%;">No</th>
   					<th>Nama kategori</th>
   					<th>deskripsi</th>
-  					<th style="width: 15%;">Aksi</th>
+  					<th style="width: 15%;"></th>
   				</tr>
   			</thead>
   			<tbody>

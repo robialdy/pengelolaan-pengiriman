@@ -1,6 +1,6 @@
-      </section>
-    </div>
-    <!--  end MAIN CONTEN -->
+</section>
+</div>
+<!--  end MAIN CONTEN -->
 
 <!-- FOOTER  -->
 <footer class="main-footer">
