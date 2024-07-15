@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 	<meta charset="UTF-8">
@@ -35,26 +36,28 @@
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
-	<title></title>
+
+	<title><?= $tittle ?></title>
+	<link rel="icon" href="https://www.jne.co.id/cfind/source/images/logo-white.svg" type="image/x-icon">
+
 </head>
 
-<body>
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		<!-- NAVBAR -->
+		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
+				</li>
 
-	<!-- NAVBAR -->
-	<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-		<!-- Left navbar links -->
-		<ul class="navbar-nav">
-			<!--  KETIKA DI PENCET MALAH MENUTUP SEMUA TIDAK MENYISAKAN ICON SAJA
-			<li class="nav-item">
-				<a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
-			</li>
-			-->
-			<li class="nav-item d-none d-sm-inline-block">
-				<a href="../index.php" class="nav-link">Home</a>
-			</li>
-			<li class="nav-item d-none d-sm-inline-block">
-				<a href="https://saweria.co/fachrirobi" class="nav-link" target="_blank">Donate</a>
-			</li>
-		</ul>
-	</nav>
-	<!-- NAVBAR -->
+				<li class="nav-item d-none d-sm-inline-block">
+					<a href="<?= base_url('') ?>" class="nav-link">Home</a>
+				</li>
+				<li class="nav-item d-none d-sm-inline-block">
+					<a href="https://saweria.co/fachrirobi" class="nav-link" target="_blank">Donate</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- NAVBAR -->
