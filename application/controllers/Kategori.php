@@ -13,6 +13,7 @@ class Kategori extends CI_Controller
 	public function index()
 	{
 		$data['read_data_kategori'] = $this->Kategori_model->readData();
+		$data['tittle'] = 'Home';
 		$this->load->view('kategori/kategori', $data);
 	}
 
@@ -21,7 +22,8 @@ class Kategori extends CI_Controller
 		$this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required|trim');
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('kategori/tambah');
+			$data['tittle'] = 'Home';
+			$this->load->view('kategori/tambah', $data);
 		} else {
 			$this->Kategori_model->createData();
 			$this->session->set_flashdata('success', 'menambahkan kategori');
@@ -35,6 +37,7 @@ class Kategori extends CI_Controller
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 		if ($this->form_validation->run() == FALSE) {
 			$data ['data_perbaris'] = $this->Kategori_model->getBySlug($slug);
+			$data['tittle'] = 'Home';
 			$this->load->view('kategori/edit', $data);
 		} else {
 			$this->Kategori_model->editData($slug);

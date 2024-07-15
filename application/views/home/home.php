@@ -1,4 +1,4 @@
-  <?php $this->load->view('components/header'); ?>
+  <?php $this->load->view('components/header', $tittle); ?>
 
   <?php $this->load->view('components/sidebar'); ?>
 
