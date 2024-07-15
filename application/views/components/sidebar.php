@@ -28,7 +28,7 @@
 					</a>
 				</li>
 				<li class="nav-item mb-2">
-					<a href="../widgets.html" class="nav-link">
+					<a href="<?= base_url('layanan')?>" class="nav-link">
 						<i class="nav-icon fas fa-cogs"></i>
 						<p>Layanan</p>
 					</a>
