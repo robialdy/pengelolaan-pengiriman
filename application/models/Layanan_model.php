@@ -8,16 +8,16 @@ class Layanan_model extends CI_Model {
     }
 
     public function get_layanan() {
-        return $this->db->get('layanan')->result_array();
+        return $this->db->get('layanan_pengiriman')->result_array();
     }
 
     public function get_layanan_by_slug($slug) {
-        return $this->db->get_where('layanan', ['slug' => $slug])->row_array();
+        return $this->db->get_where('layanan_pengiriman', ['slug' => $slug])->row_array();
     }
 
     public function hapuslayanan($id_layanan) {
         $this->db->where( 'id_layanan' , $id_layanan);
-        $this->db->delete('layanan');
+        $this->db->delete('layanan_pengiriman');
     }
 
     public function ubahlayanan($id_layanan) {
@@ -27,6 +27,6 @@ class Layanan_model extends CI_Model {
         ];
 
         $this->db->where('id_layanan', $id_layanan);
-        $this->db->update('layanan', $data);
+        $this->db->update('layanan_pengiriman', $data);
     }
 }

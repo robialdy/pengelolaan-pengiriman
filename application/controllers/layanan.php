@@ -39,7 +39,7 @@ class Layanan extends CI_Controller {
                 'deskripsi' => $this->input->post('deskripsi', true),
                 'slug' => $slug
             ];
-            $this->db->insert('layanan', $data);
+            $this->db->insert('layanan_pengiriman', $data);
             
             redirect('layanan');
         }

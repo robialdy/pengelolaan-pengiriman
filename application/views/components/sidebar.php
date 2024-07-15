@@ -28,7 +28,7 @@
 					</a>
 				</li>
 				<li class="nav-item mb-2">
-					<a href="<?= base_url('layanan')?>" class="nav-link">
+					<a href="<?= base_url('layanan') ?>" class="nav-link <?= ($this->uri->segment(1) == 'layanan') ? 'active bg-danger' : ''; ?>">
 						<i class="nav-icon fas fa-cogs"></i>
 						<p>Layanan</p>
 					</a>
@@ -49,4 +49,4 @@
 <!-- Main Content -->
 <div class="content-wrapper">
 	<section class="content">
-			<!-- Your content here -->
+		<!-- Your content here -->
