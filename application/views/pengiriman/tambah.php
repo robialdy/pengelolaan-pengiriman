@@ -13,7 +13,7 @@
 				<div class="card-body">
 					<div class="form-group col-md-13">
 						<label for="a">Kode Pengiriman:</label>
-						<input type="text" class="form-control" id="a" name="kode_pengiriman" autofocus>
+						<input type="text" class="form-control" id="a" name="kode_pengiriman">
 						<?= form_error('kode_pengiriman', '<small class="text-danger">', '</small>') ?>
 					</div>
 

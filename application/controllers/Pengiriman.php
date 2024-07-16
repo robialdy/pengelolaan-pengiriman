@@ -6,6 +6,9 @@ class Pengiriman extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('data_user')) {
+			redirect('auth');
+		};
 		$this->load->model('Pengiriman_model');
 		$this->load->model('Kategori_model');
 	}
@@ -15,6 +18,7 @@ class Pengiriman extends CI_Controller
 		$data['tittle'] = 'Pengiriman';
 		$data['read_data_pengiriman'] = $this->Pengiriman_model->readData();
 		$data['data_kategori'] = $this->Kategori_model->readData();
+		$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 		$this->load->view('pengiriman/pengiriman', $data);
 	}
 
@@ -27,6 +31,7 @@ class Pengiriman extends CI_Controller
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required|trim');
 		if ($this->form_validation->run() == FALSE) {
 			$data['tittle'] = 'Pengiriman';
+			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 			$data['read_data_kategori'] = $this->Kategori_model->readData();
 			$this->load->view('pengiriman/tambah', $data);
 		} else {
@@ -46,6 +51,7 @@ class Pengiriman extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$data['tittle'] = 'Edit';
 			$data['data_perbaris'] = $this->Pengiriman_model->getBySlug($slug);
+			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 			$data['read_data_kategori'] = $this->Kategori_model->readData();
 			$this->load->view('pengiriman/edit', $data);
 		} else {
