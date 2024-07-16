@@ -53,7 +53,7 @@ class Layanan extends CI_Controller {
 
     public function delete($slug)
 	{
-		$this->ayanan_model->deleteData($slug);
+		$this->Layanan_model->deleteData($slug);
 		$this->session->set_flashdata('success', 'menghapus layanan');
 		redirect('layanan');
 	}
@@ -77,7 +77,7 @@ class Layanan extends CI_Controller {
             $this->load->view('layanan/ubah', $data);  
             $this->load->view('components/footer');
         } else {
-            $this->Layanan_model->ubahlayanan($layanan['id_layanan']); 
+            $this->Layanan_model->ubahlayanan($slug); 
             redirect('layanan');
         }
     }
