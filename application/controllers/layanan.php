@@ -5,6 +5,9 @@ class Layanan extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+		if (!$this->session->userdata('data_user')) {
+			redirect('auth');
+		};
         $this->load->model('Layanan_model'); 
     }
 
@@ -12,9 +15,10 @@ class Layanan extends CI_Controller {
         $data = [
             'layanan' => $this->Layanan_model->get_layanan()
         ];
+		$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 
         $this->load->view('components/header');
-        $this->load->view('components/sidebar');
+        $this->load->view('components/sidebar', $data);
         $this->load->view('layanan/layanan', $data);
         $this->load->view('components/footer');
     }
@@ -26,9 +30,11 @@ class Layanan extends CI_Controller {
 
         
         if ($this->form_validation->run() == false) {
+
+			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
             
             $this->load->view('components/header');
-            $this->load->view('components/sidebar');
+            $this->load->view('components/sidebar', $data);
             $this->load->view('layanan/tambah_layanan');  
             $this->load->view('components/footer');
         } else {
@@ -66,9 +72,10 @@ class Layanan extends CI_Controller {
             $data = [
                 'layanan' => $layanan, 
             ];
+			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 
             $this->load->view('components/header');
-            $this->load->view('components/sidebar');
+            $this->load->view('components/sidebar', $data);
             $this->load->view('layanan/ubah', $data);  
             $this->load->view('components/footer');
         } else {

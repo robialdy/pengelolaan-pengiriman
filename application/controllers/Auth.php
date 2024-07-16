@@ -28,7 +28,7 @@ class Auth extends CI_Controller
 		$user = $this->db->get_where('users', ['username' => $username])->row_array();
 
 		if($user != null && password_verify($password, $user['password'])) {
-			$data['data'] = $user["username"];
+			$data['data_user'] = $user["username"];
 			$this->session->set_userdata($data);
 			redirect(base_url());
 		} else {
@@ -49,6 +49,12 @@ class Auth extends CI_Controller
 			$this->Auth_model->insertData();
 			redirect('auth');
 		}
+	}
 
+	public function logout()
+	{
+		// Hapus sessionn
+		$this->session->sess_destroy();
+		redirect('auth');
 	}
 }

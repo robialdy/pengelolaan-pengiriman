@@ -7,6 +7,9 @@ class Kategori extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('data_user')) {
+			redirect('auth');
+		};
 		$this->load->model('Kategori_model');
 	}
 
@@ -14,6 +17,7 @@ class Kategori extends CI_Controller
 	{
 		$data['read_data_kategori'] = $this->Kategori_model->readData();
 		$data['tittle'] = 'Home';
+		$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 		$this->load->view('kategori/kategori', $data);
 	}
 
@@ -23,6 +27,7 @@ class Kategori extends CI_Controller
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 		if ($this->form_validation->run() == FALSE) {
 			$data['tittle'] = 'Home';
+			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 			$this->load->view('kategori/tambah', $data);
 		} else {
 			$this->Kategori_model->createData();
@@ -38,6 +43,7 @@ class Kategori extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$data ['data_perbaris'] = $this->Kategori_model->getBySlug($slug);
 			$data['tittle'] = 'Home';
+			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 			$this->load->view('kategori/edit', $data);
 		} else {
 			$this->Kategori_model->editData($slug);
