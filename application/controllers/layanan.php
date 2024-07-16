@@ -45,19 +45,17 @@ class Layanan extends CI_Controller {
         }
     }
 
-    public function hapus($slug){
-       
-        $layanan = $this->Layanan_model->get_layanan_by_slug($slug);
-        $this->Layanan_model->hapuslayanan($layanan,'id_layanan'); 
-        $this->session->set_flashdata('flash','hapus');
-        redirect('layanan');
-    }
+    public function delete($slug)
+	{
+		$this->ayanan_model->deleteData($slug);
+		$this->session->set_flashdata('success', 'menghapus layanan');
+		redirect('layanan');
+	}
 
     public function ubah($slug) {
         
         $layanan = $this->Layanan_model->get_layanan_by_slug($slug);
 
-        
 
         $this->form_validation->set_rules('nama_layanan', 'Nama layanan', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');

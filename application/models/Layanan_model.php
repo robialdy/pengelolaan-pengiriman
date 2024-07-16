@@ -11,22 +11,25 @@ class Layanan_model extends CI_Model {
         return $this->db->get('layanan_pengiriman')->result_array();
     }
 
-    public function get_layanan_by_slug($slug) {
-        return $this->db->get_where('layanan_pengiriman', ['slug' => $slug])->row_array();
-    }
+    
+    public function deleteData($slug)
+	{
+		$this->db->where('slug', $slug);
+		$this->db->delete('layanan_pengiriman');
+	}
 
-    public function hapuslayanan($id_layanan) {
-        $this->db->where( 'id_layanan' , $id_layanan);
-        $this->db->delete('layanan_pengiriman');
-    }
-
-    public function ubahlayanan($id_layanan) {
+    public function ubahlayanan($slug) {
         $data = [
             'nama_layanan' => $this->input->post('nama_layanan', true),
             'deskripsi' => $this->input->post('deskripsi', true)
         ];
 
-        $this->db->where('id_layanan', $id_layanan);
+        $this->db->where('slug', $slug);
         $this->db->update('layanan_pengiriman', $data);
     }
+
+    public function get_layanan_by_slug($slug) {
+        return $this->db->get_where('layanan_pengiriman', ['slug' => $slug])->row_array();
+    }
+
 }
