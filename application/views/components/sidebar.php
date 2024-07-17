@@ -22,7 +22,7 @@
 					</a>
 				</li>
 				<li class="nav-item mb-2">
-					<a href="../widgets.html" class="nav-link">
+					<a href="<?= base_url('lokasi') ?>" class="nav-link <?= ($this->uri->segment(1) == 'lokasi') ? 'active bg-danger' : ''; ?>">
 						<i class="nav-icon fas fa-map-marker-alt"></i>
 						<p>Lokasi</p>
 					</a>
