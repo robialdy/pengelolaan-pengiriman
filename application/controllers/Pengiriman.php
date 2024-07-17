@@ -11,14 +11,19 @@ class Pengiriman extends CI_Controller
 		};
 		$this->load->model('Pengiriman_model');
 		$this->load->model('Kategori_model');
+		$this->load->model('Layanan_model');
+		$this->load->model('Lokasi_model');
 	}
 
 	public function index()
 	{
-		$data['tittle'] = 'Pengiriman';
-		$data['read_data_pengiriman'] = $this->Pengiriman_model->readData();
-		$data['data_kategori'] = $this->Kategori_model->readData();
-		$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
+		$data = [
+			'tittle' => 'Pengiriman',
+			'read_data_pengiriman' => $this->Pengiriman_model->readData(),
+			'data_kategori' => $this->Kategori_model->readData(),
+			'data_layanan' => $this->Layanan_model->get_layanan(),
+			'data_user' => $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array()
+		];
 		$this->load->view('pengiriman/pengiriman', $data);
 	}
 
@@ -33,6 +38,7 @@ class Pengiriman extends CI_Controller
 			$data['tittle'] = 'Pengiriman';
 			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 			$data['read_data_kategori'] = $this->Kategori_model->readData();
+			$data['data_layanan'] = $this->Layanan_model->get_layanan();
 			$this->load->view('pengiriman/tambah', $data);
 		} else {
 			$this->Pengiriman_model->createData();
@@ -53,6 +59,7 @@ class Pengiriman extends CI_Controller
 			$data['data_perbaris'] = $this->Pengiriman_model->getBySlug($slug);
 			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
 			$data['read_data_kategori'] = $this->Kategori_model->readData();
+			$data['data_layanan'] = $this->Layanan_model->get_layanan();
 			$this->load->view('pengiriman/edit', $data);
 		} else {
 			$this->Pengiriman_model->editData($slug);

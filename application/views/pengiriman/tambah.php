@@ -39,7 +39,9 @@
 							<label for="d" class="form-label">Layanan Pengiriman:</label>
 							<select class="form-control" id="d" name="layanan">
 								<option value="" selected disabled>Pilih Layanan...</option>
-								<option value="">JNE KILAT</option>
+								<?php foreach ($data_layanan as $dl) : ?>
+									<option value="<?= $dl["id_layanan"] ?>"><?= $dl["nama_layanan"] ?></option>
+								<?php endforeach; ?>
 							</select>
 							<?= form_error('layanan', '<small class="text-danger">', '</small>') ?>
 						</div>

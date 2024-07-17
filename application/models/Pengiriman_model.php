@@ -9,9 +9,10 @@ class Pengiriman_model extends CI_Model
 
 	public function readData()
 	{
-		$this->db->select('pengelolaan_pengiriman.*, kategori_barang.nama_kategori');
+		$this->db->select('pengelolaan_pengiriman.*, kategori_barang.nama_kategori, layanan_pengiriman.nama_layanan');
 		$this->db->from('pengelolaan_pengiriman');
 		$this->db->join('kategori_barang', 'pengelolaan_pengiriman.id_kategori = kategori_barang.id_kategori');
+		$this->db->join('layanan_pengiriman', 'pengelolaan_pengiriman.id_layanan = layanan_pengiriman.id_layanan');
 		$query = $this->db->get();
 		return $query->result();	
 	}
@@ -24,7 +25,7 @@ class Pengiriman_model extends CI_Model
 			'kode_pengiriman' => $kode_pengirim,
 			'domisili_asal' => $this->input->post('lokasi_awal', true),
 			'id_lokasi' => $this->input->post('lokasi_finish', true) ?: null,
-			'id_layanan' => $this->input->post('layanan', true) ?: null,
+			'id_layanan' => $this->input->post('layanan', true),
 			'id_kategori' => $this->input->post('kategori', true),
 			'slug' => $slug
 		];
@@ -39,7 +40,7 @@ class Pengiriman_model extends CI_Model
 			'kode_pengiriman' => $kode_pengirim,
 			'domisili_asal' => $this->input->post('lokasi_awal', true),
 			'id_lokasi' => $this->input->post('lokasi_finish', true) ?: null,
-			'id_layanan' => $this->input->post('layanan', true) ?: null,
+			'id_layanan' => $this->input->post('layanan', true),
 			'id_kategori' => $this->input->post('kategori', true),
 			'slug' => $slug
 		];
