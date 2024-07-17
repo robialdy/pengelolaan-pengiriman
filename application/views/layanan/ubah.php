@@ -9,7 +9,7 @@
 </div>
 
 <div>
-    <label>Deskripsi/label>
+    <label>Deskripsi</label>
     <input type="text" name="deskripsi" class="form-control" value="<?= $layanan ['deskripsi'] ?>">
     <?php echo form_error('deskripsi', '<div class="text-small text-danger">', '</div>'); ?>
 </div>
