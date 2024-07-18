@@ -13,7 +13,7 @@
 				<div class="card-body">
 					<div class="form-group col-md-13">
 						<label for="a">Kode Pengiriman:</label>
-						<input type="text" class="form-control" id="a" name="kode_pengiriman">
+						<input type="text" class="form-control" id="a" name="kode_pengiriman" value="<?= $autoInvoice ?>" readonly>
 						<?= form_error('kode_pengiriman', '<small class="text-danger">', '</small>') ?>
 					</div>
 
@@ -27,8 +27,10 @@
 						<div class="form-group col-md-6">
 							<label for="c" class="form-label">Lokasi Finish:</label>
 							<select class="form-control" id="c" name="lokasi_finish">
-								<option value="" selected disabled>Cari Lokasi Akhir...</option>
-								<option value="">Surabaya</option>
+								<option value="" selected disabled>Cari Lokasi Akhir</option>
+								<?php foreach ($data_lokasi as $dlo) : ?>
+									<option value="<?= $dlo["id_lokasi"] ?>"><?= $dlo["kota"] ?></option>
+								<?php endforeach; ?>
 							</select>
 							<?= form_error('lokasi_finish', '<small class="text-danger">', '</small>') ?>
 						</div>
@@ -38,7 +40,7 @@
 						<div class="form-group col-md-6">
 							<label for="d" class="form-label">Layanan Pengiriman:</label>
 							<select class="form-control" id="d" name="layanan">
-								<option value="" selected disabled>Pilih Layanan...</option>
+								<option value="" selected disabled>Pilih Layanan</option>
 								<?php foreach ($data_layanan as $dl) : ?>
 									<option value="<?= $dl["id_layanan"] ?>"><?= $dl["nama_layanan"] ?></option>
 								<?php endforeach; ?>
@@ -49,7 +51,7 @@
 						<div class="form-group col-md-6">
 							<label for="e" class="form-label">Kategori Barang:</label>
 							<select class="form-control" id="e" name="kategori">
-								<option value="" selected disabled>Pilih Kategori...</option>
+								<option value="" selected disabled>Pilih Kategori</option>
 								<?php foreach ($read_data_kategori as $rdk) : ?>
 									<option value="<?= $rdk["id_kategori"] ?>"><?= $rdk["nama_kategori"] ?></option>
 								<?php endforeach; ?>

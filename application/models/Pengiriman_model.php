@@ -2,17 +2,27 @@
 
 class Pengiriman_model extends CI_Model
 {
-	// public function readData()
-	// {
-	// 	return $this->db->get('pengelolaan_pengiriman')->result_array();
-	// }
+	public function autoInvoice()
+	{
+		$this->db->select_max('kode_pengiriman', 'max_kode');
+		$query = $this->db->get('pengelolaan_pengiriman');
+		$row = $query->row();
+		$kode = $row->max_kode;
+
+		$number = (int) substr($kode, 3);
+		$number++;
+
+		$kode_baru = 'BDP' . sprintf("%03s", $number);
+		return $kode_baru;
+	}
 
 	public function readData()
 	{
-		$this->db->select('pengelolaan_pengiriman.*, kategori_barang.nama_kategori, layanan_pengiriman.nama_layanan');
+		$this->db->select('pengelolaan_pengiriman.*, kategori_barang.nama_kategori, layanan_pengiriman.nama_layanan, lokasi_pengiriman.kota');
 		$this->db->from('pengelolaan_pengiriman');
 		$this->db->join('kategori_barang', 'pengelolaan_pengiriman.id_kategori = kategori_barang.id_kategori');
 		$this->db->join('layanan_pengiriman', 'pengelolaan_pengiriman.id_layanan = layanan_pengiriman.id_layanan');
+		$this->db->join('lokasi_pengiriman', 'pengelolaan_pengiriman.id_lokasi = lokasi_pengiriman.id_lokasi');
 		$query = $this->db->get();
 		return $query->result();	
 	}

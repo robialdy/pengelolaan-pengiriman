@@ -45,7 +45,7 @@
   							<td><?= $i ?></td>
   							<td><?= $rdp->kode_pengiriman ?></td>
   							<td><?= $rdp->domisili_asal ?></td>
-  							<td></td>
+  							<td><?= $rdp->kota ?></td>
   							<td><?= $rdp->nama_layanan ?></td>
   							<td><?= $rdp->nama_kategori ?></td>
   							<td align="center">

@@ -19,10 +19,11 @@ class Pengiriman extends CI_Controller
 	{
 		$data = [
 			'tittle' => 'Pengiriman',
-			'read_data_pengiriman' => $this->Pengiriman_model->readData(),
 			'data_kategori' => $this->Kategori_model->readData(),
 			'data_layanan' => $this->Layanan_model->get_layanan(),
-			'data_user' => $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array()
+			'data_lokasi' => $this->Lokasi_model->get_lokasi(),
+			'data_user' => $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array(),
+			'read_data_pengiriman' => $this->Pengiriman_model->readData(),
 		];
 		$this->load->view('pengiriman/pengiriman', $data);
 	}
@@ -35,10 +36,14 @@ class Pengiriman extends CI_Controller
 		$this->form_validation->set_rules('layanan', 'Layanan', 'trim');
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required|trim');
 		if ($this->form_validation->run() == FALSE) {
-			$data['tittle'] = 'Pengiriman';
-			$data['data_user'] = $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array();
-			$data['read_data_kategori'] = $this->Kategori_model->readData();
-			$data['data_layanan'] = $this->Layanan_model->get_layanan();
+			$data = [
+				'tittle' => 'Pengiriman | JNE Manajemen Pengiriman',
+				'data_user' => $this->db->get_where('users', ['username' => $this->session->userdata('data_user')])->row_array(),
+				'read_data_kategori' => $this->Kategori_model->readData(),
+				'data_layanan' => $this->Layanan_model->get_layanan(),
+				'data_lokasi' => $this->Lokasi_model->get_lokasi(),
+				'autoInvoice' => $this->Pengiriman_model->autoInvoice(),
+			];
 			$this->load->view('pengiriman/tambah', $data);
 		} else {
 			$this->Pengiriman_model->createData();
